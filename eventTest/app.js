@@ -4,7 +4,6 @@ var blog= require('./methord/blog');
 
 var webServer = function (req, res){ 
 	if(req.url!='/favicon.ico'){
-		console.log('************');
 		var newblog={title:"标题",content:"内容"};
 		blog.blog_save(newblog);
 

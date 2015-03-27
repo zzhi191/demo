@@ -2,29 +2,18 @@ var events=require('events');
 var util=require('util');
 
 function _base(){
-
-	var self=this;
-
-	events.EventEmitter.call(self);
-
-	self.on('newListener', function(listener) {
-        console.log('Event Listener: ' + listener);
-    });
-
-    self.eventsDone=function(){
-		self.emit('save',console.log('emit --  (save)'));
-
-		self.emit('index',console.log('emit --  (index)'));
-
-		self.emit('count',console.log('emit --  (count)'));
-
-		self.emit('saveEnd',console.log('emit -- (save-end)'));
-	};
-
-}
-
+	this.emitter=new events.EventEmitter(this);
+};
 
 util.inherits(_base,events.EventEmitter);
+
+_base.prototype.onEvent=function(eventName,callback){
+	this.emitter.on(eventName,callback);
+}
+
+_base.prototype.emitEvent=function(eventName,arg){
+	this.emitter.emit(eventName,arg);
+}
 
 
 module.exports=_base;
