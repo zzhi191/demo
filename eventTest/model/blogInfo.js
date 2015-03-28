@@ -16,7 +16,7 @@ blogInfo.prototype.onSave=function(blog){
 		console.log('blogCount',blog);
 	});
 
-	this.base.onEvent('count',function(blog){
+	this.base.onEvent('userInfoCount',function(blog){
 		console.log('count',blog);
 	});
 
@@ -31,7 +31,7 @@ blogInfo.prototype.emitEvent=function(blog){
 
 	this.base.emitEvent('blogCount',blog);
 
-	this.base.emitEvent('count',blog);
+	this.base.emitEvent('userInfoCount',blog);
 
 	this.base.emitEvent('saveEnd',blog);
 };
